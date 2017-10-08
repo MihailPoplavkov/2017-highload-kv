@@ -2,6 +2,7 @@ package ru.mail.polis.poplavkov;
 
 import com.sun.net.httpserver.HttpServer;
 import ru.mail.polis.KVService;
+import ru.mail.polis.poplavkov.routes.StatusRoute;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -11,6 +12,7 @@ public class MyService implements KVService {
 
     public MyService(int port) throws IOException {
         server = HttpServer.create(new InetSocketAddress(port), 0);
+        new StatusRoute().addRouteTo(server);
     }
 
     @Override
