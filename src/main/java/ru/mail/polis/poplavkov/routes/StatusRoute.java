@@ -10,11 +10,10 @@ public class StatusRoute implements Route {
             if ("GET".equals(exchange.getRequestMethod())) {
                 exchange.getResponseHeaders().add("content-type", "text");
                 String body = "ONLINE";
-                exchange.sendResponseHeaders(ResponseCode.OK.getCode(), body.length());
-                exchange.getResponseBody().write(body.getBytes());
+                sendResponse(exchange, ResponseCode.OK, body.getBytes());
             } else {
                 exchange.getResponseHeaders().add("Allow", "GET");
-                exchange.sendResponseHeaders(ResponseCode.NOT_ALLOWED.getCode(), 0);
+                sendResponse(exchange, ResponseCode.NOT_ALLOWED);
             }
             exchange.close();
         });
