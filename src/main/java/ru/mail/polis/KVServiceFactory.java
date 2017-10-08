@@ -2,6 +2,7 @@ package ru.mail.polis;
 
 import org.jetbrains.annotations.NotNull;
 import ru.mail.polis.poplavkov.MyService;
+import ru.mail.polis.poplavkov.dao.MyDAO;
 
 import java.io.File;
 import java.io.IOException;
@@ -45,6 +46,6 @@ final class KVServiceFactory {
             throw new IllegalArgumentException("Path is not a directory: " + data);
         }
 
-        return new MyService(port);
+        return new MyService(port, new MyDAO(data));
     }
 }

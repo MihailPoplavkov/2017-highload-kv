@@ -1,6 +1,7 @@
 package ru.mail.polis.poplavkov.routes;
 
 import com.sun.net.httpserver.HttpServer;
+import ru.mail.polis.poplavkov.dao.DAO;
 
 public interface Route {
     /**
@@ -8,5 +9,5 @@ public interface Route {
      *
      * @param server server to bind with current route
      */
-    void addRouteTo(HttpServer server);
+    void addRouteTo(HttpServer server, DAO dao);
 }
